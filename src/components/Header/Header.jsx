@@ -12,7 +12,7 @@ const Header = (props) => {
       <input
         type="text"
         name="search"
-        placeholder="Search Employee"
+        placeholder="Search by First Name"
         onChange={props.handleInput}
       />
     </div>
