@@ -33,7 +33,7 @@ class Main extends React.Component {
     // Set the state of filterEmployees
     this.setState({ filteredEmployees: filtered });
   };
-
+  
 
   render() {
     const employeeInfo = this.state.filteredEmployees.map((employee, i) => {
