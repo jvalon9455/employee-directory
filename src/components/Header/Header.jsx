@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className={"jumbotron"}>
       <h1>Employee Directory</h1>
@@ -9,6 +9,12 @@ const Header = () => {
         Click on each heading to filter or use search box to narrow employee
         results
       </h6>
+      <input
+        type="text"
+        name="search"
+        placeholder="Search Employee"
+        onChange={props.handleInput}
+      />
     </div>
   );
 };
