@@ -34,6 +34,45 @@ class Main extends React.Component {
     this.setState({ filteredEmployees: filtered });
   };
   
+  // create function to sort by first name
+  // handleFirstName = () => {
+  //   function findEmployeeA(a, b) {
+  //     const A = a.name.first.toLowerCase();
+  //     const B = b.name.first.toLowerCase();
+  //     let comparison = 0;
+  //     if(A > B) {
+  //       comparison = 1;
+  //     } else {
+  //       comparison = -1;
+  //     }
+  //     return comparison;
+  //   }
+
+  //   function findEmployeeZ(a, b) {
+  //     const A = a.name.first.toLowerCase();
+  //     const B = b.name.first.toLowerCase();
+  //     let comparison = 0;
+  //     if(B > A) {
+  //       comparison = 1;
+  //     } else {
+  //       comparison = -1;
+  //     }
+  //     return comparison;
+  //   }
+
+  //   if (this.state.isSorted) {
+  //     this.state.employees.sort(findEmployeeA);
+  //     this.setState({
+  //       isSorted: false
+  //     })
+  //   } else {
+  //     this.state.employees.sort(findEmployeeZ);
+  //     this.setState({
+  //       isSorted: true
+  //     })
+  //   }
+  //   this.setState({ employees: this.state.employees});
+  // }
 
   render() {
     const employeeInfo = this.state.filteredEmployees.map((employee, i) => {
