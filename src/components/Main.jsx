@@ -8,6 +8,7 @@ class Main extends React.Component {
     employees: [],
     search: "",
     filteredEmployees: [],
+    sorted: false,
   };
 
   componentDidMount() {
@@ -33,46 +34,46 @@ class Main extends React.Component {
     // Set the state of filterEmployees
     this.setState({ filteredEmployees: filtered });
   };
-  
-  // create function to sort by first name
-  // handleFirstName = () => {
-  //   function findEmployeeA(a, b) {
-  //     const A = a.name.first.toLowerCase();
-  //     const B = b.name.first.toLowerCase();
-  //     let comparison = 0;
-  //     if(A > B) {
-  //       comparison = 1;
-  //     } else {
-  //       comparison = -1;
-  //     }
-  //     return comparison;
-  //   }
 
-  //   function findEmployeeZ(a, b) {
-  //     const A = a.name.first.toLowerCase();
-  //     const B = b.name.first.toLowerCase();
-  //     let comparison = 0;
-  //     if(B > A) {
-  //       comparison = 1;
-  //     } else {
-  //       comparison = -1;
-  //     }
-  //     return comparison;
-  //   }
+  // create function to sort by first name beginning with A,B,C etc...
+  handleFirstName = () => {
+    function findEmployeeA(a, b) {
+      const A = a.name.first.toLowerCase();
+      const B = b.name.first.toLowerCase();
+      let comparison = 0;
+      if (A > B) {
+        comparison = 1;
+      } else {
+        comparison = -1;
+      }
+      return comparison;
+    }
+// create function to sort first name beginning with Z,Y,X etc...
+    function findEmployeeZ(a, b) {
+      const A = a.name.first.toLowerCase();
+      const B = b.name.first.toLowerCase();
+      let comparison = 0;
+      if (B > A) {
+        comparison = 1;
+      } else {
+        comparison = -1;
+      }
+      return comparison;
+    }
 
-  //   if (this.state.isSorted) {
-  //     this.state.employees.sort(findEmployeeA);
-  //     this.setState({
-  //       isSorted: false
-  //     })
-  //   } else {
-  //     this.state.employees.sort(findEmployeeZ);
-  //     this.setState({
-  //       isSorted: true
-  //     })
-  //   }
-  //   this.setState({ employees: this.state.employees});
-  // }
+    if (this.state.sorted) {
+      this.state.filteredEmployees.sort(findEmployeeA);
+      this.setState({
+        sorted: false,
+      });
+    } else {
+      this.state.filteredEmployees.sort(findEmployeeZ);
+      this.setState({
+        sorted: true,
+      });
+    }
+    this.setState({ filteredEmployees: this.state.filteredEmployees });
+  };
 
   render() {
     const employeeInfo = this.state.filteredEmployees.map((employee, i) => {
@@ -100,15 +101,17 @@ class Main extends React.Component {
                   <th>Image</th>
                   <th>
                     First Name
+                    <i
+                      onClick={this.handleFirstName}
+                      className={"fa fa-fw fa-sort"}
+                    ></i>
                   </th>
-                  <th>
-                    Last Name
-                  </th>
+                  <th>Last Name</th>
                   <th>Email</th>
                   <th>Age</th>
                 </tr>
               </thead>
-            {employeeInfo}
+              {employeeInfo}
             </table>
           </div>
         </div>
